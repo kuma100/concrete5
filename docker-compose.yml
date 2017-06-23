@@ -1,0 +1,31 @@
+version: "2.0"
+
+services:
+  cms:
+    image: gxro2/concrete5
+    build:
+      context: build/concrete5
+      dockerfile: Dockerfile
+    hostname: cms
+    container_name: cms
+    volumes:
+      - ./cms/app/config:/var/www/localhost/htdocs/concrete5/application/config
+      - ./cms/app/files:/var/www/localhost/htdocs/concrete5/application/files
+      - ./cms/packages:/var/www/localhost/htdocs/concrete5/packages
+    restart: always
+    ports:
+      - "8881:80"
+
+  mysql:
+    image: mysql
+    hostname: mysql
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql98765}
+      MYSQL_DATABASE: redmine
+    volumes:
+      - ./mysql/db:/var/lib/mysql
+    restart: always
+    expose:
+      - "3306"
+    command: "--character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
