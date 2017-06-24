@@ -1,4 +1,4 @@
-version: "2.0"
+version: "2.1"
 
 services:
   cms:
@@ -21,7 +21,7 @@ services:
     hostname: mysql
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql98765}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql2345}
       MYSQL_DATABASE: redmine
     volumes:
       - ./mysql/db:/var/lib/mysql
