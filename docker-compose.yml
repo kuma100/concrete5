@@ -22,7 +22,7 @@ services:
     container_name: mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-mysql2345}
-      MYSQL_DATABASE: redmine
+      MYSQL_DATABASE: concrete5
     volumes:
       - ./mysql/db:/var/lib/mysql
     restart: always
